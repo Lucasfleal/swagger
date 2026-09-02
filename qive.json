@@ -3,7 +3,7 @@
   "info": {
     "description": "Teste controlado TOTVS iPaaS",
     "version": "1.0.0",
-    "title": "Qive Teste A - 2 rotas simples"
+    "title": "Qive Teste B - varios parametros"
   },
   "host": "api.arquivei.com.br",
   "tags": [
@@ -21,7 +21,7 @@
         "tags": [
           "nfe"
         ],
-        "summary": "Busca NFe recebida",
+        "summary": "Busca NFe com filtros simples",
         "produces": [
           "application/json"
         ],
@@ -31,54 +31,25 @@
             "name": "access_key",
             "required": true,
             "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful fetch",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "$ref": "#/definitions/Status"
-                },
-                "data": {
-                  "$ref": "#/definitions/NFe"
-                }
-              }
-            }
           },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "$ref": "#/definitions/Status"
-                },
-                "error": {
-                  "$ref": "#/definitions/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/nfe/danfe/": {
-      "get": {
-        "tags": [
-          "nfe"
-        ],
-        "summary": "Busca DANFe",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
           {
             "in": "query",
-            "name": "access_key",
-            "required": true,
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "cnpj",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "format_type",
             "type": "string"
           }
         ],
