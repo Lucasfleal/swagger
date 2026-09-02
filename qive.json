@@ -1,15 +1,35 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Qive NFe - arquivo mínimo baseado na estrutura da API Arquivei Lite.",
-    "version": "1.0.0",
-    "title": "Qive NFe - Lite Style"
+    "description": "Qive NFe em estrutura simplificada compatível com o padrão da API Arquivei Lite.",
+    "version": "1.99.1",
+    "title": "Qive NFe - TOTVS iPaaS"
   },
   "host": "api.arquivei.com.br",
   "tags": [
     {
       "name": "nfe",
-      "description": "Operations on NFe"
+      "description": "Consultas de NFe"
+    },
+    {
+      "name": "nfe-danfe",
+      "description": "Consulta de DANFe"
+    },
+    {
+      "name": "nfe-events",
+      "description": "Eventos de NFe"
+    },
+    {
+      "name": "nfe-manifest",
+      "description": "Manifestação de NFe"
+    },
+    {
+      "name": "nfe-upload",
+      "description": "Upload de NFe"
+    },
+    {
+      "name": "nfe-properties",
+      "description": "Properties de NFe"
     }
   ],
   "schemes": [
@@ -21,23 +41,72 @@
         "tags": [
           "nfe"
         ],
-        "summary": "Fetch received NFes",
-        "description": "Busca NFes recebidas na conta Qive.",
+        "summary": "Busca NFes - received",
+        "description": "Busca XMLs de NFes para a role fixa 'received'.",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "in": "query",
-            "name": "access_key",
+            "name": "limit",
+            "required": false,
+            "type": "integer",
+            "description": "Máximo de documentos."
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "type": "integer",
+            "description": "Cursor de paginação."
+          },
+          {
+            "in": "query",
+            "name": "access_key[]",
             "required": false,
             "type": "string",
-            "description": "Chave de acesso da NFe."
+            "description": "Chave de acesso. Para múltiplas chaves, repetir o parâmetro."
+          },
+          {
+            "in": "query",
+            "name": "cnpj[]",
+            "required": false,
+            "type": "string",
+            "description": "CNPJ/CPF. Para múltiplos valores, repetir o parâmetro."
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "required": false,
+            "type": "string",
+            "description": "Filtro de custom property."
+          },
+          {
+            "in": "query",
+            "name": "created_at[from]",
+            "required": false,
+            "type": "string",
+            "description": "Data/hora inicial."
+          },
+          {
+            "in": "query",
+            "name": "created_at[to]",
+            "required": false,
+            "type": "string",
+            "description": "Data/hora final."
+          },
+          {
+            "in": "query",
+            "name": "format_type",
+            "required": false,
+            "type": "string",
+            "description": "Formato de retorno: xml ou json."
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful fetch",
+            "description": "Successful request",
             "schema": {
               "type": "object",
               "properties": {
@@ -78,8 +147,111 @@
               }
             }
           },
-          "404": {
-            "description": "Not Found",
+          "429": {
+            "description": "Too Many Requests"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfe/emitted/": {
+      "get": {
+        "tags": [
+          "nfe"
+        ],
+        "summary": "Busca NFes - emitted",
+        "description": "Busca XMLs de NFes para a role fixa 'emitted'.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer",
+            "description": "Máximo de documentos."
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "type": "integer",
+            "description": "Cursor de paginação."
+          },
+          {
+            "in": "query",
+            "name": "access_key[]",
+            "required": false,
+            "type": "string",
+            "description": "Chave de acesso. Para múltiplas chaves, repetir o parâmetro."
+          },
+          {
+            "in": "query",
+            "name": "cnpj[]",
+            "required": false,
+            "type": "string",
+            "description": "CNPJ/CPF. Para múltiplos valores, repetir o parâmetro."
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "required": false,
+            "type": "string",
+            "description": "Filtro de custom property."
+          },
+          {
+            "in": "query",
+            "name": "created_at[from]",
+            "required": false,
+            "type": "string",
+            "description": "Data/hora inicial."
+          },
+          {
+            "in": "query",
+            "name": "created_at[to]",
+            "required": false,
+            "type": "string",
+            "description": "Data/hora final."
+          },
+          {
+            "in": "query",
+            "name": "format_type",
+            "required": false,
+            "type": "string",
+            "description": "Formato de retorno: xml ou json."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "data": {
+                  "$ref": "#/definitions/NFe"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
             "schema": {
               "type": "object",
               "properties": {
@@ -92,8 +264,1403 @@
               }
             }
           },
-          "405": {
-            "description": "Method Not Allowed",
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfe/transporter/": {
+      "get": {
+        "tags": [
+          "nfe"
+        ],
+        "summary": "Busca NFes - transporter",
+        "description": "Busca XMLs de NFes para a role fixa 'transporter'.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer",
+            "description": "Máximo de documentos."
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "type": "integer",
+            "description": "Cursor de paginação."
+          },
+          {
+            "in": "query",
+            "name": "access_key[]",
+            "required": false,
+            "type": "string",
+            "description": "Chave de acesso. Para múltiplas chaves, repetir o parâmetro."
+          },
+          {
+            "in": "query",
+            "name": "cnpj[]",
+            "required": false,
+            "type": "string",
+            "description": "CNPJ/CPF. Para múltiplos valores, repetir o parâmetro."
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "required": false,
+            "type": "string",
+            "description": "Filtro de custom property."
+          },
+          {
+            "in": "query",
+            "name": "created_at[from]",
+            "required": false,
+            "type": "string",
+            "description": "Data/hora inicial."
+          },
+          {
+            "in": "query",
+            "name": "created_at[to]",
+            "required": false,
+            "type": "string",
+            "description": "Data/hora final."
+          },
+          {
+            "in": "query",
+            "name": "format_type",
+            "required": false,
+            "type": "string",
+            "description": "Formato de retorno: xml ou json."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "data": {
+                  "$ref": "#/definitions/NFe"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfe/authorized/": {
+      "get": {
+        "tags": [
+          "nfe"
+        ],
+        "summary": "Busca NFes - authorized",
+        "description": "Busca XMLs de NFes para a role fixa 'authorized'.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer",
+            "description": "Máximo de documentos."
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "type": "integer",
+            "description": "Cursor de paginação."
+          },
+          {
+            "in": "query",
+            "name": "access_key[]",
+            "required": false,
+            "type": "string",
+            "description": "Chave de acesso. Para múltiplas chaves, repetir o parâmetro."
+          },
+          {
+            "in": "query",
+            "name": "cnpj[]",
+            "required": false,
+            "type": "string",
+            "description": "CNPJ/CPF. Para múltiplos valores, repetir o parâmetro."
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "required": false,
+            "type": "string",
+            "description": "Filtro de custom property."
+          },
+          {
+            "in": "query",
+            "name": "created_at[from]",
+            "required": false,
+            "type": "string",
+            "description": "Data/hora inicial."
+          },
+          {
+            "in": "query",
+            "name": "created_at[to]",
+            "required": false,
+            "type": "string",
+            "description": "Data/hora final."
+          },
+          {
+            "in": "query",
+            "name": "format_type",
+            "required": false,
+            "type": "string",
+            "description": "Formato de retorno: xml ou json."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "data": {
+                  "$ref": "#/definitions/NFe"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/dfe/nfe": {
+      "post": {
+        "tags": [
+          "nfe"
+        ],
+        "summary": "Lista NFes com filtros avançados",
+        "description": "Endpoint v2 para consulta avançada de NFes.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string",
+            "default": "always"
+          },
+          {
+            "in": "body",
+            "name": "Body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NFeSearchV2Request"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "data": {
+                  "$ref": "#/definitions/GenericData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfe/received/status": {
+      "put": {
+        "tags": [
+          "nfe-properties"
+        ],
+        "summary": "Atualiza property status de NFe recebida",
+        "description": "Rota fixa para a property padrão 'status'.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PropertyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "data": {
+                  "$ref": "#/definitions/GenericData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfe/upload": {
+      "post": {
+        "tags": [
+          "nfe-upload"
+        ],
+        "summary": "Upload de lote de NFes",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "invoices",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UploadRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "data": {
+                  "$ref": "#/definitions/GenericData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfe/upload/status": {
+      "get": {
+        "tags": [
+          "nfe-upload"
+        ],
+        "summary": "Status do upload de NFes",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "request_id",
+            "required": false,
+            "type": "string",
+            "description": "ID retornado pelo upload."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "data": {
+                  "$ref": "#/definitions/GenericData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/nfe/manifest": {
+      "get": {
+        "tags": [
+          "nfe-manifest"
+        ],
+        "summary": "Busca manifestação de NFe v2",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_key[]",
+            "required": false,
+            "type": "string",
+            "description": "Chave de acesso."
+          },
+          {
+            "in": "query",
+            "name": "origin",
+            "required": false,
+            "type": "string",
+            "description": "Origem da manifestação."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "data": {
+                  "$ref": "#/definitions/GenericData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfe/manifest": {
+      "get": {
+        "tags": [
+          "nfe-manifest"
+        ],
+        "summary": "Busca manifestação de NFe",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_key[]",
+            "required": false,
+            "type": "string",
+            "description": "Chave de acesso."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "data": {
+                  "$ref": "#/definitions/GenericData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "nfe-manifest"
+        ],
+        "summary": "Manifesta NFes de forma assíncrona",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ManifestRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "data": {
+                  "$ref": "#/definitions/GenericData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfe/manifest/status": {
+      "get": {
+        "tags": [
+          "nfe-manifest"
+        ],
+        "summary": "Status da manifestação de NFe",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_key[]",
+            "required": false,
+            "type": "string",
+            "description": "Chave de acesso."
+          },
+          {
+            "in": "query",
+            "name": "request_id[]",
+            "required": false,
+            "type": "string",
+            "description": "Request ID da manifestação."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "data": {
+                  "$ref": "#/definitions/GenericData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfe/manifest/sync": {
+      "post": {
+        "tags": [
+          "nfe-manifest"
+        ],
+        "summary": "Manifestação síncrona de NFe",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ManifestRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "data": {
+                  "$ref": "#/definitions/GenericData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/nfe/events": {
+      "get": {
+        "tags": [
+          "nfe-events"
+        ],
+        "summary": "Busca eventos de uma NFe v2",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_key",
+            "required": false,
+            "type": "string",
+            "description": "Chave de acesso."
+          },
+          {
+            "in": "query",
+            "name": "type[]",
+            "required": false,
+            "type": "string",
+            "description": "Tipo do evento, ex.: 110111."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "data": {
+                  "$ref": "#/definitions/GenericData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/events/nfe": {
+      "get": {
+        "tags": [
+          "nfe-events"
+        ],
+        "summary": "Busca eventos de NFe",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_key[]",
+            "required": false,
+            "type": "string",
+            "description": "Chave de acesso."
+          },
+          {
+            "in": "query",
+            "name": "type[]",
+            "required": false,
+            "type": "string",
+            "description": "Tipo do evento."
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer",
+            "description": "Limite de resultados."
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "type": "integer",
+            "description": "Cursor de paginação."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "data": {
+                  "$ref": "#/definitions/GenericData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/dfe/nfe/events": {
+      "post": {
+        "tags": [
+          "nfe-events"
+        ],
+        "summary": "Realiza eventos RTC de NFe",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string",
+            "default": "always"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RTCEventRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "data": {
+                  "$ref": "#/definitions/GenericData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfe/danfe": {
+      "get": {
+        "tags": [
+          "nfe-danfe"
+        ],
+        "summary": "Busca DANFe em PDF base64",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_key",
+            "required": true,
+            "type": "string",
+            "description": "Chave de acesso da NFe."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "data": {
+                  "$ref": "#/definitions/DanfeData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
             "schema": {
               "type": "object",
               "properties": {
@@ -159,7 +1726,165 @@
       "properties": {
         "xml": {
           "type": "string",
-          "description": "base64 encoded"
+          "description": "XML da NFe em base64."
+        },
+        "access_key": {
+          "type": "string"
+        }
+      }
+    },
+    "GenericData": {
+      "type": "object"
+    },
+    "DanfeData": {
+      "type": "object",
+      "properties": {
+        "pdf": {
+          "type": "string",
+          "description": "PDF/DANFe em base64."
+        }
+      }
+    },
+    "NFeSearchV2Request": {
+      "type": "object",
+      "properties": {
+        "Fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Filters": {
+          "type": "object",
+          "properties": {
+            "DocumentIdentifier": {
+              "type": "string"
+            },
+            "Status": {
+              "type": "string"
+            },
+            "HasCCE": {
+              "type": "boolean"
+            },
+            "HasEvent": {
+              "type": "boolean"
+            },
+            "HasManifestation": {
+              "type": "boolean"
+            },
+            "HasXPed": {
+              "type": "boolean"
+            }
+          }
+        },
+        "Limit": {
+          "type": "integer"
+        },
+        "Paginator": {
+          "type": "string"
+        }
+      }
+    },
+    "PropertyRequest": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "access_key": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "UploadRequest": {
+      "type": "object",
+      "required": [
+        "invoices"
+      ],
+      "properties": {
+        "invoices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "xml"
+            ],
+            "properties": {
+              "xml": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "callback_url": {
+          "type": "string"
+        }
+      }
+    },
+    "ManifestRequest": {
+      "type": "object",
+      "required": [
+        "manifests"
+      ],
+      "properties": {
+        "manifests": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "access_key",
+              "code"
+            ],
+            "properties": {
+              "access_key": {
+                "type": "string"
+              },
+              "code": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "RTCEventRequest": {
+      "type": "object",
+      "required": [
+        "access_key",
+        "owner",
+        "owner_uf",
+        "tp_evento",
+        "det_evento"
+      ],
+      "properties": {
+        "access_key": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "owner_uf": {
+          "type": "string"
+        },
+        "n_seq_evento": {
+          "type": "string"
+        },
+        "tp_evento": {
+          "type": "string"
+        },
+        "det_evento": {
+          "type": "object"
         }
       }
     }
