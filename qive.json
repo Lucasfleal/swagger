@@ -7192,8 +7192,7 @@
             "required": true,
             "type": "array",
             "items": {
-              "type": "string",
-              "example": "19427033000140"
+              "type": "string"
             }
           },
           {
@@ -7272,8 +7271,7 @@
               "enum": [
                 "nfse",
                 "nfe"
-              ],
-              "example": "nfse"
+              ]
             }
           },
           {
@@ -11519,8 +11517,8 @@
           "description": "MessageID é o ID da mensagem que foi enviada para o processamento do OCR."
         },
         "role": {
-          "description:": "Role representa o papel do proprietário no documento.\nEsse campo só é retornado para documentos NFSE.\nOs valores possíveis são \"EMITTED\" e \"RECEIVED\".",
-          "type": "string"
+          "type": "string",
+          "description": "Role representa o papel do proprietário no documento.\nEsse campo só é retornado para documentos NFSE.\nOs valores possíveis são \"EMITTED\" e \"RECEIVED\"."
         },
         "status_code": {
           "description": "StatusCode é o status do processamento do documento.\nPode ser \"success\", \"error\", \"processing\".",
