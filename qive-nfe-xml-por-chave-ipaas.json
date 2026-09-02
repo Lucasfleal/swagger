@@ -1,0 +1,145 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Consulta de XML de NFe recebida por chave de acesso, simplificada para TOTVS iPaaS.",
+    "version": "1.0.0",
+    "title": "Qive - Consultar XML NFe"
+  },
+  "host": "api.arquivei.com.br",
+  "tags": [
+    {
+      "name": "nfe",
+      "description": "Consulta de XML de NFe"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v1/nfe/received/": {
+      "get": {
+        "tags": [
+          "nfe"
+        ],
+        "summary": "Consultar XML da NFe pela chave",
+        "description": "Consulta uma NFe recebida pela chave de acesso. O campo xml retornado é Base64.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_key[]",
+            "required": true,
+            "type": "string",
+            "description": "Chave de acesso da NFe com 44 dígitos."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Consulta realizada com sucesso",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Nfe"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Requisição inválida",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Não autorizado",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Limite de requisições excedido"
+          },
+          "500": {
+            "description": "Erro interno",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "ApiIdAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-ID"
+    },
+    "ApiKeyAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-KEY"
+    }
+  },
+  "definitions": {
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Error": {
+      "type": "string"
+    },
+    "Nfe": {
+      "type": "object",
+      "properties": {
+        "access_key": {
+          "type": "string"
+        },
+        "xml": {
+          "type": "string",
+          "description": "XML da NFe codificado em Base64."
+        }
+      }
+    }
+  }
+}
