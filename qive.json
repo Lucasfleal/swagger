@@ -3,7 +3,7 @@
   "info": {
     "description": "Teste controlado TOTVS iPaaS",
     "version": "1.0.0",
-    "title": "Qive Teste C - parametro especial"
+    "title": "Qive Teste D - POST body"
   },
   "host": "api.arquivei.com.br",
   "tags": [
@@ -16,26 +16,34 @@
     "https"
   ],
   "paths": {
-    "/v1/nfe/received/": {
-      "get": {
+    "/v2/dfe/nfe": {
+      "post": {
         "tags": [
           "nfe"
         ],
-        "summary": "Busca NFe com data",
+        "summary": "Busca NFe v2",
+        "consumes": [
+          "application/json"
+        ],
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "in": "query",
-            "name": "access_key",
+            "in": "body",
+            "name": "Body",
             "required": true,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "created_at[from]",
-            "type": "string"
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Limit": {
+                  "type": "integer"
+                },
+                "Paginator": {
+                  "type": "string"
+                }
+              }
+            }
           }
         ],
         "responses": {
