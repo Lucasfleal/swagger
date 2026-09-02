@@ -1,0 +1,3006 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Qive API completa em formato ultra simplificado para TOTVS iPaaS.",
+    "version": "1.99.1",
+    "title": "Qive API Completa - TOTVS iPaaS Ultra"
+  },
+  "host": "api.arquivei.com.br",
+  "tags": [
+    {
+      "name": "NFe"
+    },
+    {
+      "name": "NFSe"
+    },
+    {
+      "name": "CTe"
+    },
+    {
+      "name": "CTe-OS"
+    },
+    {
+      "name": "NFCe"
+    },
+    {
+      "name": "MDFe"
+    },
+    {
+      "name": "FlagErp"
+    },
+    {
+      "name": "Etiquetas"
+    },
+    {
+      "name": "Upload"
+    },
+    {
+      "name": "Empresas"
+    },
+    {
+      "name": "Property"
+    },
+    {
+      "name": "Gestão de Pagamentos - Boletos"
+    },
+    {
+      "name": "Invoice"
+    },
+    {
+      "name": "Utilities"
+    },
+    {
+      "name": "OCR"
+    },
+    {
+      "name": "LATAM"
+    },
+    {
+      "name": "Dados - CNPJs"
+    },
+    {
+      "name": "Eventos em Lote"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v2/dfe/nfe": {
+      "post": {
+        "tags": [
+          "NFe"
+        ],
+        "summary": "Lista as NFes da conta com base nos filtros aplicados",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Body",
+            "required": false,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/dfe/cte": {
+      "post": {
+        "tags": [
+          "CTe"
+        ],
+        "summary": "Lista os CTes da conta com base nos filtros aplicados",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Body",
+            "required": false,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/dfe/nfse": {
+      "post": {
+        "tags": [
+          "NFSe"
+        ],
+        "summary": "Lista as NFses da conta com base nos filtros aplicados",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Body",
+            "required": false,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/dfe/upload": {
+      "post": {
+        "tags": [
+          "Upload"
+        ],
+        "summary": "Upload de DFes",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/dfe/flagerp": {
+      "post": {
+        "tags": [
+          "FlagErp"
+        ],
+        "summary": "Upload de metadados de DFes para flag ERP",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfe/{role}": {
+      "get": {
+        "tags": [
+          "NFe"
+        ],
+        "summary": "Busca XMLs de NFes recebidas pelos CNPJs de sua conta",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "role",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "access_key",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "cnpj",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "created_at[from]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "created_at[to]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "format_type",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfe/{role}/{property}": {
+      "put": {
+        "tags": [
+          "NFe"
+        ],
+        "summary": "Adiciona ou atualiza uma Property customizada para uma NFe Recebida.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "role",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "property",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "data",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfe/upload": {
+      "post": {
+        "tags": [
+          "NFe"
+        ],
+        "summary": "Realiza o Upload de um lote de NFes",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "invoices",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfe/upload/status": {
+      "get": {
+        "tags": [
+          "NFe"
+        ],
+        "summary": "Verifica o status de um pedido de upload de lote de NFes, utilizando o request_id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "request_id",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/nfe/manifest": {
+      "get": {
+        "tags": [
+          "NFe"
+        ],
+        "summary": "Busca a manifestação de uma NFe.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "origin",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfe/manifest": {
+      "get": {
+        "tags": [
+          "NFe"
+        ],
+        "summary": "Busca a manifestação de uma NFe.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "NFe"
+        ],
+        "summary": "Realiza a manifestação de uma ou mais NFes, de forma assíncrona.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfe/manifest/status": {
+      "get": {
+        "tags": [
+          "NFe"
+        ],
+        "summary": "Busca o status de um pedido de manifestação de NFe realizado através do endpoint POST /v1/nfe/manifest",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_key",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "request_id",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfe/manifest/sync": {
+      "post": {
+        "tags": [
+          "NFe"
+        ],
+        "summary": "Realiza a manifestação de uma NFe de forma síncrona (sync)",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/nfe/events": {
+      "get": {
+        "tags": [
+          "NFe"
+        ],
+        "summary": "Busca os XMLs de todos os eventos de uma NFe",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/events/nfe": {
+      "get": {
+        "tags": [
+          "NFe"
+        ],
+        "summary": "Busca os XMLs de todos os eventos de NFe da conta",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_key",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfe/danfe": {
+      "get": {
+        "tags": [
+          "NFe"
+        ],
+        "summary": "Busca o Documento Auxiliar (DANFe) de uma NFe, retornando um PDF em base64",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfse/{role}": {
+      "get": {
+        "tags": [
+          "NFSe"
+        ],
+        "summary": "Busca XMLs de NFSes recebidas pelos CNPJs de sua conta",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "role",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "cnpj",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "created_at[from]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "created_at[to]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "format_type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "xml_format",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/nfse/received": {
+      "get": {
+        "tags": [
+          "NFSe"
+        ],
+        "summary": "Busca XMLs de NFSes recebidas pelos CNPJs de sua conta",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "cnpj",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "created_at[from]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "created_at[to]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "format_type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "xml_format",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfse/received/{property}": {
+      "put": {
+        "tags": [
+          "NFSe"
+        ],
+        "summary": "Adiciona ou atualiza uma Property customizada para uma NFSe Recebida. (esta funcionalidade não existe para NFSe Emitida)",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "property",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "data",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfse/{role}/manual/pdf": {
+      "get": {
+        "tags": [
+          "NFSe"
+        ],
+        "summary": "Recupera o PDF Original de NFSes que entraram pelo fluxo de OCR.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "role",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "cnpj",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfse/events": {
+      "get": {
+        "tags": [
+          "NFSe"
+        ],
+        "summary": "Busca eventos de NFse.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfse/danfse": {
+      "get": {
+        "tags": [
+          "NFSe"
+        ],
+        "summary": "Busca o Documento Auxiliar (DANFSe) de uma NFSe, sendo um PDF formatado em base64",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/cte/{role}": {
+      "get": {
+        "tags": [
+          "CTe"
+        ],
+        "summary": "Busca XMLs de CTes tomadas pelos CNPJs de sua conta",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "role",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "access_key",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "cnpj",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "created_at[from]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "created_at[to]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "format_type",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/cte/{role}/{property}": {
+      "put": {
+        "tags": [
+          "CTe"
+        ],
+        "summary": "Adiciona ou atualiza uma Property customizada para uma CTe Tomada.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "role",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "property",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "data",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/cte/events": {
+      "get": {
+        "tags": [
+          "CTe"
+        ],
+        "summary": "Busca os XMLs de todos os eventos de uma CTe",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/cte/events": {
+      "get": {
+        "tags": [
+          "CTe"
+        ],
+        "summary": "Busca os XMLs de todos os eventos de CTe da conta",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_key",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/cte/upload": {
+      "post": {
+        "tags": [
+          "CTe"
+        ],
+        "summary": "Realiza o Upload de um lote de CTes",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "invoices",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/cte/upload/status": {
+      "get": {
+        "tags": [
+          "CTe"
+        ],
+        "summary": "Verifica o status de um pedido de upload de lote de CTes, utilizando o request_id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "request_id",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/cte/dacte": {
+      "get": {
+        "tags": [
+          "CTe"
+        ],
+        "summary": "Busca o Documento Auxiliar (DACTe) de uma CTe, retornando um PDF em base64",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/dfe/cteos": {
+      "post": {
+        "tags": [
+          "CTe-OS"
+        ],
+        "summary": "Lista os CTe-OS da conta com base nos filtros aplicados",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Body",
+            "required": false,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/cte-os/{role}": {
+      "get": {
+        "tags": [
+          "CTe-OS"
+        ],
+        "summary": "Busca XMLs de CTes-OS tomadas pelos CNPJs de sua conta",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "role",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "access_key",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "cnpj",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "created_at[from]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "created_at[to]",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/cte-os/{role}/{property}": {
+      "put": {
+        "tags": [
+          "CTe-OS"
+        ],
+        "summary": "Adiciona ou atualiza uma Property customizada para uma CTe-OS Tomada.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "role",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "property",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "data",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/cte-os/events": {
+      "get": {
+        "tags": [
+          "CTe-OS"
+        ],
+        "summary": "Busca os XMLs de todos os eventos de uma CTe-OS",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/cte-os/dacteos": {
+      "get": {
+        "tags": [
+          "CTe-OS"
+        ],
+        "summary": "Busca o Documento Auxiliar (DACTe-OS) de uma CTe-OS, retornando um PDF em base64",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/nfce/emitted": {
+      "get": {
+        "tags": [
+          "NFCe"
+        ],
+        "summary": "Busca XMLs de NFCes emitidas pelos CNPJs de sua conta",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "access_key",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "cnpj",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "created_at[from]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "created_at[to]",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/dfe/mdfe": {
+      "post": {
+        "tags": [
+          "MDFe"
+        ],
+        "summary": "Lista os MDFes da conta com base nos filtros aplicados",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Body",
+            "required": false,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/property": {
+      "get": {
+        "tags": [
+          "Property"
+        ],
+        "summary": "Retorna todas as chaves de properties disponíveis para uso nos endpoints específicos.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/company": {
+      "get": {
+        "tags": [
+          "Empresas"
+        ],
+        "summary": "Busca todos os CNPJs da conta autenticada.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/invoice/search": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "summary": "Busca invoices, documentos internacionais ingeridos através de OCR",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "initial_date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "final_date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/invoice/{id}": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "summary": "Retrieve invoice by id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/invoice/{id}/pdf": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "summary": "Retrieve Invoice PDF",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/utility/search": {
+      "get": {
+        "tags": [
+          "Utilities"
+        ],
+        "summary": "Busca por documentos de Utilities (Energia, Água, Gás, Telecom e Genéricos)",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "initial_date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "final_date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "document_types",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/utility/{document_type}/{id}": {
+      "get": {
+        "tags": [
+          "Utilities"
+        ],
+        "summary": "Retorna um documento de Utilities por ID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "document_type",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/utility/{document_type}/{id}/pdf": {
+      "get": {
+        "tags": [
+          "Utilities"
+        ],
+        "summary": "Retorna o PDF de um documento de Utilities",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "document_type",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/utility/{document_type}/{id}/xml": {
+      "get": {
+        "tags": [
+          "Utilities"
+        ],
+        "summary": "Retorna o XML de um documento de Utilities",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "document_type",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/ocr/upload": {
+      "post": {
+        "tags": [
+          "OCR"
+        ],
+        "summary": "Upload de PDF para OCR",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/ocr/status": {
+      "get": {
+        "tags": [
+          "OCR"
+        ],
+        "summary": "Recupera o status de um documento",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "message_id",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/bank-billet": {
+      "get": {
+        "tags": [
+          "Gestão de Pagamentos - Boletos"
+        ],
+        "summary": "Retorna uma pesquisa de boleto com notas",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "owners[]",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "issue_date[from]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "issue_date[to]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "due_date[from]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "due_date[to]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "document_identifier",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "trust_level",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "linked_document_type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "updated_at[from]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "updated_at[to]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/bank-billet/search": {
+      "post": {
+        "tags": [
+          "Gestão de Pagamentos - Boletos"
+        ],
+        "summary": "Retorna uma pesquisa de boleto com notas",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Body",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/bank-billet/{owner}/{digitableLine}/pdf": {
+      "get": {
+        "tags": [
+          "Gestão de Pagamentos - Boletos"
+        ],
+        "summary": "Busca PDF de um Boleto Bancário, a partir do owner e digitableLine",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "digitableLine",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/account/tags/list": {
+      "post": {
+        "tags": [
+          "Etiquetas"
+        ],
+        "summary": "Lista todas as etiquetas disponíveis para a sua conta",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Body",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/dfe/tags/list": {
+      "post": {
+        "tags": [
+          "Etiquetas"
+        ],
+        "summary": "Lista as etiquetas aplicadas em um documento",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Body",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/dfe/tags/update": {
+      "post": {
+        "tags": [
+          "Etiquetas"
+        ],
+        "summary": "Atualiza as etiquetas de um documento, podendo adicionar/remover",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Body",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/certificate/upload": {
+      "post": {
+        "tags": [
+          "Empresas"
+        ],
+        "summary": "Envio de certificado digital",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Body",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/latam/upload": {
+      "post": {
+        "tags": [
+          "LATAM"
+        ],
+        "summary": "Recebe XMLs de documentos LATAM.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Body",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/latam/search": {
+      "get": {
+        "tags": [
+          "LATAM"
+        ],
+        "summary": "Busca por documentos LATAM",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "initial_date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "final_date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/latam/{id}": {
+      "get": {
+        "tags": [
+          "LATAM"
+        ],
+        "summary": "Busca dados de um documento LATAM por ID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/latam/{id}/xml": {
+      "get": {
+        "tags": [
+          "LATAM"
+        ],
+        "summary": "Busca XML em base64 de um document latam por ID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/latam/{id}/cancel": {
+      "post": {
+        "tags": [
+          "LATAM"
+        ],
+        "summary": "Recebe XMLs de documentos LATAM.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/cnpj": {
+      "get": {
+        "tags": [
+          "Dados - CNPJs"
+        ],
+        "summary": "Retorna os dados de várias empresas na Receita Federal do Brasil.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "cnpj",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/cnpj/{CNPJ}": {
+      "get": {
+        "tags": [
+          "Dados - CNPJs"
+        ],
+        "summary": "Retorna os dados de uma empresa na Receita Federal do Brasil.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "CNPJ",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/dfe/nfe/events": {
+      "post": {
+        "tags": [
+          "NFe"
+        ],
+        "summary": "Realiza os novos eventos da RTC",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/event/batch": {
+      "post": {
+        "tags": [
+          "Eventos em Lote"
+        ],
+        "summary": "Submete eventos em lote para processamento",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "X-Flow-Identifier",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/event/batch/{id}": {
+      "get": {
+        "tags": [
+          "Eventos em Lote"
+        ],
+        "summary": "Consulta o status de um lote de eventos",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Use-ApiGateway",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "ApiIdAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-ID"
+    },
+    "ApiKeyAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-KEY"
+    }
+  },
+  "definitions": {
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Error": {
+      "type": "string"
+    },
+    "GenericResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/Status"
+        },
+        "data": {
+          "type": "object"
+        }
+      }
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/Status"
+        },
+        "error": {
+          "$ref": "#/definitions/Error"
+        }
+      }
+    }
+  }
+}
