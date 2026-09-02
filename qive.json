@@ -380,16 +380,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -469,18 +460,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -670,18 +649,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -821,16 +788,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -891,18 +849,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -985,16 +931,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -1059,18 +996,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -1151,16 +1076,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -1225,18 +1141,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -1356,18 +1260,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -1450,16 +1342,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -1524,18 +1407,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -1612,16 +1483,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -1686,18 +1548,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -1788,16 +1638,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -1862,18 +1703,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -1974,16 +1803,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -2048,18 +1868,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -2156,16 +1964,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -2230,18 +2029,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -2383,18 +2170,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -2560,18 +2335,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -2712,18 +2475,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -2874,16 +2625,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -2948,18 +2690,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -3088,16 +2818,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -3162,18 +2883,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -3234,16 +2943,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -3308,18 +3008,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -3383,16 +3071,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -3457,18 +3136,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -3620,18 +3287,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -3772,18 +3427,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -3923,16 +3566,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -3993,18 +3627,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -4087,16 +3709,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -4161,18 +3774,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -4302,18 +3903,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -4479,18 +4068,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -4571,16 +4148,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -4645,18 +4213,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -4776,18 +4332,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -4928,18 +4472,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -5148,16 +4680,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -5218,18 +4741,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -5312,16 +4823,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -5386,18 +4888,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -5527,18 +5017,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -5679,18 +5157,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -5806,16 +5272,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -5876,18 +5333,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -6166,25 +5611,14 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
               }
             }
           }
-        }
+        },
+        "parameters": []
       }
     },
     "/v1/company": {
@@ -6214,16 +5648,7 @@
                 }
               }
             },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              }
-            }
+            "headers": {}
           },
           "400": {
             "description": "Bad request",
@@ -6284,18 +5709,6 @@
           "429": {
             "description": "Too many requests",
             "headers": {
-              "X-RateLimit-Limit": {
-                "description": "Número de requisições permitidas para o período",
-                "type": "integer"
-              },
-              "X-RateLimit-Remaining": {
-                "description": "Número de requisições ainda disponíveis para serem feitas no período",
-                "type": "integer"
-              },
-              "X-RateLimit-Reset": {
-                "description": "Timestamp do momento em que o X-RateLimit-Remaining irá resetar",
-                "type": "integer"
-              },
               "Retry-After": {
                 "description": "Tempo, em segundos, até que ocorra o reset do X-RateLimit-Remaining",
                 "type": "integer"
@@ -6316,7 +5729,8 @@
               }
             }
           }
-        }
+        },
+        "parameters": []
       }
     },
     "/v1/invoice/search": {
@@ -9550,7 +8964,8 @@
               }
             }
           }
-        }
+        },
+        "type": "object"
       }
     },
     "NFsePropertyData": {
@@ -9564,7 +8979,8 @@
         },
         "properties": {
           "$ref": "#/definitions/Properties"
-        }
+        },
+        "type": "object"
       }
     },
     "Result": {
@@ -9891,7 +9307,8 @@
               "$ref": "#/definitions/UtilityTaxDetail"
             }
           }
-        }
+        },
+        "type": "array"
       }
     },
     "UtilityGas": {
@@ -9942,7 +9359,8 @@
           "items": {
             "$ref": "#/definitions/UtilityItem"
           }
-        }
+        },
+        "type": "array"
       }
     },
     "UtilityWater": {
@@ -9993,7 +9411,8 @@
           "items": {
             "$ref": "#/definitions/UtilityItem"
           }
-        }
+        },
+        "type": "array"
       }
     },
     "UtilityTelecom": {
@@ -10052,7 +9471,8 @@
               "$ref": "#/definitions/UtilityTaxDetail"
             }
           }
-        }
+        },
+        "type": "array"
       }
     },
     "UtilityGeneric": {
@@ -10091,7 +9511,8 @@
           "items": {
             "$ref": "#/definitions/UtilityItem"
           }
-        }
+        },
+        "type": "array"
       }
     },
     "BankBillet": {
@@ -10896,41 +10317,34 @@
     },
     "LATAMUploadHTTPResponseV1": {
       "description": "HTTPResponseV1 é a resposta de sucesso retornada pelo upload de um documento latam",
-      "schema": {
-        "properties": {
-          "data": {
-            "description": "Data é o resultado da operação.",
-            "properties": {
-              "request_id": {
-                "description": "RequestID é o identificador da requisição",
-                "type": "string",
-                "x-go-name": "RequestID"
-              }
-            },
-            "type": "object",
-            "x-go-name": "Data"
+      "properties": {
+        "data": {
+          "description": "Data é o resultado da operação.",
+          "properties": {
+            "request_id": {
+              "description": "RequestID é o identificador da requisição",
+              "type": "string"
+            }
           },
-          "status": {
-            "description": "Status é o código de status HTTP.",
-            "properties": {
-              "code": {
-                "description": "Status é o código de status HTTP.",
-                "format": "int64",
-                "type": "integer",
-                "x-go-name": "Code"
-              },
-              "message": {
-                "description": "Message é uma mensagem descrevendo o código de status HTTP.",
-                "type": "string",
-                "x-go-name": "Message"
-              }
-            },
-            "type": "object",
-            "x-go-name": "Status"
-          }
+          "type": "object"
         },
-        "type": "object"
-      }
+        "status": {
+          "description": "Status é o código de status HTTP.",
+          "properties": {
+            "code": {
+              "description": "Status é o código de status HTTP.",
+              "format": "int64",
+              "type": "integer"
+            },
+            "message": {
+              "description": "Message é uma mensagem descrevendo o código de status HTTP.",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
     },
     "Latam": {
       "properties": {
@@ -11091,7 +10505,8 @@
             },
             "total_taxes_retention": {
               "type": "string"
-            }
+            },
+            "type": "array"
           }
         }
       },
@@ -11122,78 +10537,64 @@
     },
     "GetLATAMXMLHTTPResponseV1": {
       "description": "GetLATAMXMLHTTPResponseV1 é a resposta de sucesso retornada pelo endpoint de obtenção do XML.",
-      "schema": {
-        "properties": {
-          "data": {
-            "description": "Data é o documento encontrado.",
-            "properties": {
-              "xml_content": {
-                "type": "string",
-                "x-go-name": "XMLContent"
-              }
-            },
-            "type": "object",
-            "x-go-name": "Data"
+      "properties": {
+        "data": {
+          "description": "Data é o documento encontrado.",
+          "properties": {
+            "xml_content": {
+              "type": "string"
+            }
           },
-          "status": {
-            "description": "Status é o código de status HTTP.",
-            "properties": {
-              "code": {
-                "description": "Status é o código de status HTTP.",
-                "format": "int64",
-                "type": "integer",
-                "x-go-name": "Code"
-              },
-              "message": {
-                "description": "Message é uma mensagem descrevendo o código de status HTTP.",
-                "type": "string",
-                "x-go-name": "Message"
-              }
-            },
-            "type": "object",
-            "x-go-name": "Status"
-          }
+          "type": "object"
         },
-        "type": "object"
-      }
+        "status": {
+          "description": "Status é o código de status HTTP.",
+          "properties": {
+            "code": {
+              "description": "Status é o código de status HTTP.",
+              "format": "int64",
+              "type": "integer"
+            },
+            "message": {
+              "description": "Message é uma mensagem descrevendo o código de status HTTP.",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
     },
     "LATAMCancelHTTPResponseV1": {
       "description": "É a resposta de sucesso retornada pela operação de atualização de status para cancelamento de um documento.",
-      "schema": {
-        "properties": {
-          "data": {
-            "description": "Data é o documento encontrado.",
-            "properties": {
-              "message": {
-                "description": "Mensagem indicando se a operação foi efetuada com sucesso.",
-                "type": "string",
-                "x-go-name": "Message"
-              }
-            },
-            "type": "object",
-            "x-go-name": "Data"
+      "properties": {
+        "data": {
+          "description": "Data é o documento encontrado.",
+          "properties": {
+            "message": {
+              "description": "Mensagem indicando se a operação foi efetuada com sucesso.",
+              "type": "string"
+            }
           },
-          "status": {
-            "description": "Status é o código de status HTTP.",
-            "properties": {
-              "code": {
-                "description": "Status é o código de status HTTP.",
-                "format": "int64",
-                "type": "integer",
-                "x-go-name": "Code"
-              },
-              "message": {
-                "description": "Message é uma mensagem descrevendo o código de status HTTP.",
-                "type": "string",
-                "x-go-name": "Message"
-              }
-            },
-            "type": "object",
-            "x-go-name": "Status"
-          }
+          "type": "object"
         },
-        "type": "object"
-      }
+        "status": {
+          "description": "Status é o código de status HTTP.",
+          "properties": {
+            "code": {
+              "description": "Status é o código de status HTTP.",
+              "format": "int64",
+              "type": "integer"
+            },
+            "message": {
+              "description": "Message é uma mensagem descrevendo o código de status HTTP.",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
     },
     "CnaeSecundarias": {
       "properties": {
@@ -12695,7 +12096,8 @@
             "type": "object",
             "additionalProperties": true
           }
-        }
+        },
+        "type": "array"
       }
     },
     "EventBatchProcessResponse": {
@@ -12788,7 +12190,8 @@
           "items": {
             "$ref": "#/definitions/EventBatchStatusItem"
           }
-        }
+        },
+        "type": "array"
       }
     },
     "EventBatchStatusItem": {
