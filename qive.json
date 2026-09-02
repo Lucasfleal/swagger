@@ -90,7 +90,7 @@
           "NFe"
         ],
         "summary": "Lista as NFes da conta com base nos filtros aplicados",
-        "description": "Busca NFes da conta utilizando filtros avançados. O body permite informar Fields, Filters, Limit e Paginator.",
+        "description": "Este endpoint permite buscar todas as NFes da conta, retornando os dados conforme a projeção solicitada, além de permitir novos filtros como chave de acesso, CNPJ do emitente, transportador e destinatário, status da NFe, entre outros.",
         "produces": [
           "application/json"
         ],
@@ -120,9 +120,9 @@
             "in": "body",
             "name": "Body",
             "required": false,
-            "description": "Filtros, campos retornados, limite e paginação da busca de NFes.",
+            "description": "A API busca NFes através dos seguintes filtros, que devem ser enviados no corpo da requisição: ### Filtros (`Filters`): - **`CreatedAt`** (Objeto com `From` e `To`) – Filtra os documentos pelo intervalo de data/hora de c",
             "schema": {
-              "$ref": "#/definitions/NFeV2Request"
+              "type": "object"
             }
           }
         ],
@@ -139,10 +139,7 @@
               "$ref": "#/definitions/ErrorResponse"
             }
           }
-        },
-        "consumes": [
-          "application/json"
-        ]
+        }
       }
     },
     "/v1/dfe/cte": {
@@ -4684,7 +4681,8 @@
       "type": "string"
     },
     "GenericData": {
-      "type": "object"
+      "type": "object",
+      "additionalProperties": true
     },
     "GenericResponse": {
       "type": "object",
@@ -4705,174 +4703,6 @@
         },
         "error": {
           "$ref": "#/definitions/Error"
-        }
-      }
-    },
-    "NFeV2Request": {
-      "type": "object",
-      "properties": {
-        "Fields": {
-          "type": "array",
-          "description": "Campos da NFe que devem ser retornados.",
-          "items": {
-            "type": "string"
-          }
-        },
-        "Filters": {
-          "type": "object",
-          "description": "Filtros utilizados na busca de NFes.",
-          "properties": {
-            "CreatedAt": {
-              "type": "object",
-              "description": "Intervalo de criação do documento na Qive.",
-              "properties": {
-                "From": {
-                  "type": "string"
-                },
-                "To": {
-                  "type": "string"
-                }
-              }
-            },
-            "EmissionDate": {
-              "type": "object",
-              "description": "Intervalo da data de emissão da NFe.",
-              "properties": {
-                "From": {
-                  "type": "string"
-                },
-                "To": {
-                  "type": "string"
-                }
-              }
-            },
-            "DocumentIdentifier": {
-              "type": "string",
-              "description": "Chave de acesso da NFe."
-            },
-            "EmitterCnpj": {
-              "type": "array",
-              "description": "CNPJs/CPFs dos emitentes.",
-              "items": {
-                "type": "string"
-              }
-            },
-            "TransporterCnpj": {
-              "type": "array",
-              "description": "CNPJs/CPFs dos transportadores.",
-              "items": {
-                "type": "string"
-              }
-            },
-            "ReceiverCnpj": {
-              "type": "array",
-              "description": "CNPJs/CPFs dos destinatários.",
-              "items": {
-                "type": "string"
-              }
-            },
-            "Owners": {
-              "type": "array",
-              "description": "CNPJs/CPFs proprietários dos documentos na Qive.",
-              "items": {
-                "type": "string"
-              }
-            },
-            "Status": {
-              "type": "string",
-              "description": "Status da NFe, por exemplo canceled ou authorized."
-            },
-            "Origins": {
-              "type": "array",
-              "description": "Origens pelas quais a NFe foi obtida.",
-              "items": {
-                "type": "string"
-              }
-            },
-            "HasCCE": {
-              "type": "boolean",
-              "description": "Indica se a NFe possui Carta de Correção."
-            },
-            "HasEvent": {
-              "type": "boolean",
-              "description": "Indica se a NFe possui evento associado."
-            },
-            "HasManifestation": {
-              "type": "boolean",
-              "description": "Indica se a NFe possui manifestação."
-            },
-            "HasXPed": {
-              "type": "boolean",
-              "description": "Indica se a NFe possui xPed."
-            },
-            "Cfops": {
-              "type": "array",
-              "description": "CFOPs utilizados no filtro.",
-              "items": {
-                "type": "string"
-              }
-            },
-            "NfeNumber": {
-              "type": "object",
-              "description": "Intervalo de números da NFe.",
-              "properties": {
-                "From": {
-                  "type": "integer",
-                  "format": "int64"
-                },
-                "To": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            },
-            "Tags": {
-              "type": "array",
-              "description": "IDs de tags. Retorna documentos que possuam pelo menos uma.",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            },
-            "TagsAll": {
-              "type": "array",
-              "description": "IDs de tags que devem estar presentes no documento.",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            },
-            "XPeds": {
-              "type": "array",
-              "description": "Números de pedidos associados à NFe.",
-              "items": {
-                "type": "string"
-              }
-            },
-            "OwnerRoles": {
-              "type": "array",
-              "description": "Papéis do proprietário da NFe na Qive.",
-              "items": {
-                "type": "string"
-              }
-            },
-            "FinNFe": {
-              "type": "array",
-              "description": "Finalidades de emissão da NFe (1 a 6).",
-              "items": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "Limit": {
-          "type": "integer",
-          "format": "int64",
-          "description": "Quantidade máxima de resultados."
-        },
-        "Paginator": {
-          "type": "string",
-          "description": "Cursor/token para paginação."
         }
       }
     }
