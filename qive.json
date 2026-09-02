@@ -3,7 +3,7 @@
   "info": {
     "description": "Teste controlado TOTVS iPaaS",
     "version": "1.0.0",
-    "title": "Qive Teste D - POST body"
+    "title": "Qive Teste E - path dinamico"
   },
   "host": "api.arquivei.com.br",
   "tags": [
@@ -16,34 +16,21 @@
     "https"
   ],
   "paths": {
-    "/v2/dfe/nfe": {
-      "post": {
+    "/v1/invoice/{id}": {
+      "get": {
         "tags": [
           "nfe"
         ],
-        "summary": "Busca NFe v2",
-        "consumes": [
-          "application/json"
-        ],
+        "summary": "Busca por ID",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "in": "body",
-            "name": "Body",
+            "in": "path",
+            "name": "id",
             "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "Limit": {
-                  "type": "integer"
-                },
-                "Paginator": {
-                  "type": "string"
-                }
-              }
-            }
+            "type": "string"
           }
         ],
         "responses": {
@@ -115,4 +102,4 @@
       }
     }
   }
-} 
+}
