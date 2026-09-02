@@ -1,114 +1,127 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "1.99.1",
-    "title": "Qive API - Teste NFe"
+    "description": "Qive NFe - arquivo mínimo baseado na estrutura da API Arquivei Lite.",
+    "version": "1.0.0",
+    "title": "Qive NFe - Lite Style"
   },
   "host": "api.arquivei.com.br",
+  "tags": [
+    {
+      "name": "nfe",
+      "description": "Operations on NFe"
+    }
+  ],
   "schemes": [
     "https"
   ],
   "paths": {
-    "/v1/nfe/{role}": {
+    "/v1/nfe/received/": {
       "get": {
         "tags": [
-          "NFe"
+          "nfe"
         ],
-        "summary": "Busca XMLs de NFes recebidas pelos CNPJs de sua conta",
+        "summary": "Fetch received NFes",
+        "description": "Busca NFes recebidas na conta Qive.",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "role",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "minimum": 1,
-            "description": "O nome da role. Valores possíves: **received**, **emitted**, **transporter**, **authorized**. ex: **/v1/nfe/received**"
-          },
-          {
-            "name": "limit",
             "in": "query",
-            "type": "integer",
-            "description": "Quantidade de XMLs retornados na resposta. Máximo 50 documentos. Caso não seja enviado, serão retornados 50 documentos."
-          },
-          {
-            "name": "cursor",
-            "in": "query",
-            "type": "integer",
-            "description": "O cursor define a posição a partir da qual serão buscados os documentos. Este valor será retorno no campo data.page.next após uma requisição bem sucedida, com o valor do próximo cursor a ser buscado."
-          },
-          {
             "name": "access_key",
-            "in": "query",
-            "type": "array",
-            "description": "Filtrar uma lista de chaves de acesso. Exemplo de uso deste filtro: v1/nfe/received?access_key[]=44charKey",
-            "items": {
-              "type": "string"
-            },
-            "collectionFormat": "multi"
-          },
-          {
-            "name": "cnpj",
-            "in": "query",
-            "type": "array",
-            "description": "Filtrar por uma lista de CNPJs ou CPFs. Examplo de uso deste filtro: v1/nfe/received?cnpj[]=34174654000153&cnpj[]=34174654000215",
-            "items": {
-              "type": "string"
-            },
-            "collectionFormat": "multi"
-          },
-          {
-            "name": "filter",
-            "in": "query",
+            "required": false,
             "type": "string",
-            "description": "Filtrar pela presença de um valor para uma custom property, de acordo com a nossa Query Language. Este filtro utiliza uma linguagem pré-fixada, onde os operadores são colocados antes dos operandos."
-          },
-          {
-            "name": "created_at[from]",
-            "in": "query",
-            "type": "string",
-            "description": "Filtrar por datas de criação da nota na API. Este campo é obrigatório quando o campo created_at[to] for utilizado. Examplo de uso = /v1/nfe/received?created_at[from]=2019-09-12 15:30:25&created_at[to]=2019-09-15 15:30:25. <br> Pode ser utilizado datetime ou apenas date."
-          },
-          {
-            "name": "created_at[to]",
-            "in": "query",
-            "type": "string",
-            "description": "Filtrar por datas de criação da nota na API. Este campo é obrigatório quando o campo created_at[from] for utilizado. Examplo de uso = /v1/nfe/received?created_at[from]=2019-09-12 15:30:25&created_at[to]=2019-09-15 15:30:25. <br> Pode ser utilizado datetime ou apenas date."
-          },
-          {
-            "name": "format_type",
-            "in": "query",
-            "type": "string",
-            "enum": [
-              "xml",
-              "json"
-            ],
-            "description": "Formata a resposta em JSON ou XML"
+            "description": "Chave de acesso da NFe."
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful fetch"
+            "description": "Successful fetch",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "data": {
+                  "$ref": "#/definitions/NFe"
+                }
+              }
+            }
           },
           "400": {
-            "description": "Bad request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not found"
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
           },
           "405": {
-            "description": "Method not allowed"
+            "description": "Method Not Allowed",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
           },
           "429": {
-            "description": "Too many requests"
+            "description": "Too Many Requests"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#/definitions/Status"
+                },
+                "error": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
           }
         }
       }
@@ -124,6 +137,31 @@
       "type": "apiKey",
       "in": "header",
       "name": "X-API-KEY"
+    }
+  },
+  "definitions": {
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Error": {
+      "type": "string"
+    },
+    "NFe": {
+      "type": "object",
+      "properties": {
+        "xml": {
+          "type": "string",
+          "description": "base64 encoded"
+        }
+      }
     }
   }
 }
