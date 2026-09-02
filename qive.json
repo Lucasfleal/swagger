@@ -3,7 +3,7 @@
   "info": {
     "description": "Teste controlado TOTVS iPaaS",
     "version": "1.0.0",
-    "title": "Qive Teste B - varios parametros"
+    "title": "Qive Teste C - parametro especial"
   },
   "host": "api.arquivei.com.br",
   "tags": [
@@ -21,7 +21,7 @@
         "tags": [
           "nfe"
         ],
-        "summary": "Busca NFe com filtros simples",
+        "summary": "Busca NFe com data",
         "produces": [
           "application/json"
         ],
@@ -34,22 +34,7 @@
           },
           {
             "in": "query",
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "in": "query",
-            "name": "cursor",
-            "type": "integer"
-          },
-          {
-            "in": "query",
-            "name": "cnpj",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "format_type",
+            "name": "created_at[from]",
             "type": "string"
           }
         ],
@@ -121,5 +106,5 @@
         }
       }
     }
-  } 
+  }
 }
